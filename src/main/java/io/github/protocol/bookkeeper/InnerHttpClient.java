@@ -33,7 +33,6 @@ public class InnerHttpClient {
         return client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-
     public HttpResponse<String> post(String url, Object body, String... params)
             throws IOException, InterruptedException {
         return this.post(url, objectToString(body), params);
