@@ -26,17 +26,16 @@ public class ConfigsImplTest {
     }
 
     @Test
-    public void testPutConfig() throws Exception {
+    public void testPutConfig() throws BookkeeperAdminException {
         HashMap<String, String> config = new HashMap<>();
         config.put("allowEphemeralPorts", "false");
         configsImpl.putConfig(config);
         Map<String, String> resp = configsImpl.getConfig();
         Assertions.assertEquals("false", resp.get("allowEphemeralPorts"));
-
     }
 
     @Test
-    public void testGetConfig() throws Exception {
+    public void testGetConfig() throws BookkeeperAdminException {
         Map<String, String> config = configsImpl.getConfig();
         Assertions.assertTrue(config.size() != 0);
     }
