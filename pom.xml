@@ -23,9 +23,9 @@
         <checkstyle-plugin.version>3.2.0</checkstyle-plugin.version>
         <javadoc-plugin.version>3.4.1</javadoc-plugin.version>
         <lombok.version>1.18.26</lombok.version>
-        <puppycrawl.version>10.8.0</puppycrawl.version>
+        <puppycrawl.version>10.9.3</puppycrawl.version>
         <release-plugin.version>3.0.0-M6</release-plugin.version>
-        <scm-provider-gitexe.version>1.13.0</scm-provider-gitexe.version>
+        <scm-provider-gitexe.version>2.0.0</scm-provider-gitexe.version>
         <source-plugin.version>3.2.1</source-plugin.version>
         <spotbugs-maven-plugin.version>4.7.2.0</spotbugs-maven-plugin.version>
         <surefire-plugin.version>3.0.0-M9</surefire-plugin.version>

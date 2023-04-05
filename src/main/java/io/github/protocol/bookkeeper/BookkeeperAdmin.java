@@ -5,5 +5,9 @@ public interface BookkeeperAdmin {
         return new BookkeeperAdminBuilderImpl();
     }
 
+    Bookies bookies();
+
+    AutoRecovery autoRecovery();
+
     Heartbeat heartbeat();
 }
