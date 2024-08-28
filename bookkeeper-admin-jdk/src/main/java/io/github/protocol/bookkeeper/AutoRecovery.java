@@ -6,7 +6,7 @@ public interface AutoRecovery {
 
     void recoveryBookie(RecoveryBookieReqData reqData) throws BookkeeperAdminException;
 
-    UnderReplicatedLedger listUnderReplicatedLedger(ListUnderReplicatedLedgerReqData reqData) 
+    UnderReplicatedLedger listUnderReplicatedLedger(ListUnderReplicatedLedgerReqData reqData)
         throws BookkeeperAdminException;
 
     Auditor whoIsAuditor() throws BookkeeperAdminException;
