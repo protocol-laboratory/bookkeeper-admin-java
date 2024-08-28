@@ -23,19 +23,21 @@
         <jackson.version>2.17.2</jackson.version>
         <junit.version>5.11.0</junit.version>
         <log4j.version>2.20.0</log4j.version>
-        <!-- plugin -->
-        <compiler-plugin.version>3.10.1</compiler-plugin.version>
-        <checkstyle-plugin.version>3.2.0</checkstyle-plugin.version>
-        <javadoc-plugin.version>3.4.1</javadoc-plugin.version>
         <lombok.version>1.18.34</lombok.version>
         <puppycrawl.version>10.18.0</puppycrawl.version>
-        <release-plugin.version>3.0.0-M6</release-plugin.version>
-        <scm-provider-gitexe.version>2.1.0</scm-provider-gitexe.version>
-        <source-plugin.version>3.2.1</source-plugin.version>
+        <!-- plugin -->
+        <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-checkstyle-plugin.version>3.4.0</maven-checkstyle-plugin.version>
+        <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
+        <maven-javadoc-plugin.version>3.8.0</maven-javadoc-plugin.version>
+        <maven-release-plugin.version>3.1.1</maven-release-plugin.version>
+        <maven-scm-provider-gitexe.version>2.1.0</maven-scm-provider-gitexe.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.3.1</maven-surefire-plugin.version>
         <spotbugs-maven-plugin.version>4.7.2.0</spotbugs-maven-plugin.version>
         <spotless-maven-plugi.version>2.43.0</spotless-maven-plugi.version>
-        <surefire-plugin.version>3.0.0-M9</surefire-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -75,7 +77,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler-plugin.version}</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
@@ -84,7 +86,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle-plugin.version}</version>
+                <version>${maven-checkstyle-plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
@@ -121,7 +123,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire-plugin.version}</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <useFile>false</useFile>
@@ -149,7 +151,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>${release-plugin.version}</version>
+                <version>${maven-release-plugin.version}</version>
                 <configuration>
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
@@ -160,14 +162,14 @@
                     <dependency>
                         <groupId>org.apache.maven.scm</groupId>
                         <artifactId>maven-scm-provider-gitexe</artifactId>
-                        <version>${scm-provider-gitexe.version}</version>
+                        <version>${maven-scm-provider-gitexe.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${javadoc-plugin.version}</version>
+                <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <sourcepath>${src.dir}</sourcepath>
                     <doclint>all,-missing</doclint>
@@ -184,7 +186,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>${source-plugin.version}</version>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -225,7 +227,7 @@
 
     <developers>
         <developer>
-            <name>ShootHzj</name>
+            <name>shootHzj</name>
             <email>shoothzj@gmail.com</email>
         </developer>
     </developers>
@@ -262,7 +264,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.0.1</version>
+                        <version>${maven-gpg-plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -293,12 +295,12 @@
                     <plugin>
                         <groupId>org.projectlombok</groupId>
                         <artifactId>lombok-maven-plugin</artifactId>
-                        <version>1.18.20.0</version>
+                        <version>${lombok-maven-plugin.version}</version>
                         <dependencies>
                             <dependency>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok</artifactId>
-                                <version>1.18.24</version>
+                                <version>${lombok.version}</version>
                             </dependency>
                         </dependencies>
                         <executions>
