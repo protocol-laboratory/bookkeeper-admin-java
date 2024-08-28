@@ -1,18 +1,21 @@
-name: checkstyle
+name: java spotbugs
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  checkstyle:
+  java_spotbugs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Maven Central Repository
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: checkstyle
-        run: mvn -B clean checkstyle:check
+      - name: spotbugs
+        run: mvn -B -DskipTests clean verify spotbugs:spotbugs
