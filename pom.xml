@@ -11,8 +11,9 @@
 
     <modules>
         <module>bookkeeper-admin-api</module>
+        <module>bookkeeper-admin-common</module>
         <module>bookkeeper-admin-jdk</module>
-        <module>bookkeeper-admin-reactor</module>
+        <module>bookkeeper-admin-reactive</module>
     </modules>
 
     <properties>

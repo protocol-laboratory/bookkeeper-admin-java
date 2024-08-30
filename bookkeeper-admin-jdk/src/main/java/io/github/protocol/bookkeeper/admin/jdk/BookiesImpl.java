@@ -1,6 +1,7 @@
 package io.github.protocol.bookkeeper.admin.jdk;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import io.github.protocol.bookkeeper.admin.common.JacksonService;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
