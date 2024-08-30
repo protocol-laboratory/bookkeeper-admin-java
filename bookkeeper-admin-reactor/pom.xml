@@ -9,13 +9,18 @@
         <version>0.0.2</version>
     </parent>
 
-    <artifactId>bookkeeper-admin-jdk</artifactId>
+    <artifactId>bookkeeper-admin-reactor</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.github.protocol-laboratory</groupId>
             <artifactId>bookkeeper-admin-api</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor.netty</groupId>
+            <artifactId>reactor-netty-http</artifactId>
+            <version>${reactor-netty.version}</version>
         </dependency>
     </dependencies>
 
