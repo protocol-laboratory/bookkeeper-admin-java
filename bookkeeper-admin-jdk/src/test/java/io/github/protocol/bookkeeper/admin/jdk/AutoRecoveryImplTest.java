@@ -1,6 +1,7 @@
 package io.github.protocol.bookkeeper.admin.jdk;
 
 import io.github.embedded.bookkeeper.core.EmbeddedBookkeeperServer;
+import io.github.protocol.bookkeeper.admin.api.Configuration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -18,8 +19,8 @@ public class AutoRecoveryImplTest {
     public static void setup() throws Exception {
         SERVER.start();
         Configuration conf = new Configuration();
-        conf.setHost("localhost");
-        conf.setPort(SERVER.getBkWebPort());
+        conf.host("localhost");
+        conf.port(SERVER.getBkWebPort());
         autoRecovery = new AutoRecoveryImpl(new InnerHttpClient(conf));
     }
 

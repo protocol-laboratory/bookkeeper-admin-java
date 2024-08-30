@@ -1,5 +1,7 @@
 package io.github.protocol.bookkeeper.admin.jdk;
 
+import io.github.protocol.bookkeeper.admin.api.Configuration;
+
 public class BookkeeperAdminBuilderImpl implements BookkeeperAdminBuilder {
     private final Configuration conf;
 
@@ -14,13 +16,13 @@ public class BookkeeperAdminBuilderImpl implements BookkeeperAdminBuilder {
 
     @Override
     public BookkeeperAdminBuilder host(String host) {
-        this.conf.setHost(host);
+        this.conf.host(host);
         return this;
     }
 
     @Override
     public BookkeeperAdminBuilder port(int port) {
-        this.conf.setPort(port);
+        this.conf.port(port);
         return this;
     }
 }

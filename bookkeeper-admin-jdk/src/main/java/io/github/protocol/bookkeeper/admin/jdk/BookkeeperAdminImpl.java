@@ -1,5 +1,7 @@
 package io.github.protocol.bookkeeper.admin.jdk;
 
+import io.github.protocol.bookkeeper.admin.api.Configuration;
+
 public class BookkeeperAdminImpl implements BookkeeperAdmin {
     private final BookiesImpl bookies;
 

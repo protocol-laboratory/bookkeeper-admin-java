@@ -1,6 +1,8 @@
 package io.github.protocol.bookkeeper.admin.jdk;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.github.protocol.bookkeeper.admin.api.Configuration;
+import io.github.protocol.bookkeeper.admin.common.JacksonService;
 
 import java.io.IOException;
 import java.net.URI;
@@ -22,7 +24,7 @@ public class InnerHttpClient {
         this.client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .build();
-        this.httpPrefix = "http://" + conf.getHost() + ":" + conf.getPort();
+        this.httpPrefix = "http://" + conf.host + ":" + conf.port;
     }
 
     public HttpResponse<String> get(String urlSuffix) throws Exception {

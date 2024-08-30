@@ -9,12 +9,12 @@
         <version>0.0.3</version>
     </parent>
 
-    <artifactId>bookkeeper-admin-reactor</artifactId>
+    <artifactId>bookkeeper-admin-reactive</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.github.protocol-laboratory</groupId>
-            <artifactId>bookkeeper-admin-api</artifactId>
+            <artifactId>bookkeeper-admin-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
