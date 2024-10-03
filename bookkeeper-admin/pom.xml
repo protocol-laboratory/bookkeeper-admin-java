@@ -9,13 +9,18 @@
         <version>0.1.0</version>
     </parent>
 
-    <artifactId>bookkeeper-admin-jdk</artifactId>
+    <artifactId>bookkeeper-admin</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.github.protocol-laboratory</groupId>
             <artifactId>bookkeeper-admin-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfacade</groupId>
+            <artifactId>http-facade</artifactId>
+            <version>${http-facade.version}</version>
         </dependency>
     </dependencies>
 
