@@ -1,11 +1,12 @@
 package io.github.protocol.bookkeeper.admin.jdk;
 
 
+import io.github.openfacade.http.HttpResponse;
 import io.github.protocol.bookkeeper.admin.common.JacksonService;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class ConfigsImpl implements Configs {
 
@@ -18,8 +19,8 @@ public class ConfigsImpl implements Configs {
     @Override
     public void putConfig(Map<String, String> config) throws BookkeeperAdminException {
         try {
-            innerHttpClient.put(UrlConst.CONFIG_SERVER_CONFIG, JacksonService.toJson(config));
-        } catch (IOException | InterruptedException e) {
+            innerHttpClient.put(UrlConst.CONFIG_SERVER_CONFIG, config);
+        } catch (IOException | InterruptedException | ExecutionException e) {
             throw new BookkeeperAdminException(e);
         }
     }
@@ -27,8 +28,8 @@ public class ConfigsImpl implements Configs {
     @Override
     public Map<String, String> getConfig() throws BookkeeperAdminException {
         try {
-            HttpResponse<String> resp = innerHttpClient.get(UrlConst.CONFIG_SERVER_CONFIG);
-            return JacksonService.toObject(resp.body(), Map.class);
+            HttpResponse response = innerHttpClient.get(UrlConst.CONFIG_SERVER_CONFIG);
+            return JacksonService.toObject(response.body(), Map.class);
         } catch (Exception e) {
             throw new BookkeeperAdminException(e);
         }

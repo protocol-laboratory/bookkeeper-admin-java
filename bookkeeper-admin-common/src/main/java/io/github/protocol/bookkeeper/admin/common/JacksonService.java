@@ -7,7 +7,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
 import java.util.List;
 
 public class JacksonService {
@@ -21,12 +23,16 @@ public class JacksonService {
         return MAPPER.writeValueAsString(o);
     }
 
-    public static <T> T toObject(String json, Class<T> type) throws JsonProcessingException {
+    public static <T> T toObject(byte[] json, Class<T> type) throws IOException {
         return MAPPER.readValue(json, type);
     }
 
-    public static <T> T toRefer(String json, TypeReference<T> ref) throws JsonProcessingException {
+    public static <T> T toRefer(byte[] json, TypeReference<T> ref) throws IOException {
         return MAPPER.readValue(json, ref);
+    }
+
+    public static byte[] toBytes(@Nullable Object o) throws JsonProcessingException {
+        return o == null ? null : MAPPER.writeValueAsBytes(o);
     }
 
     public static <T> List<T> toList(String json, TypeReference<List<T>> typeRef) throws JsonProcessingException {

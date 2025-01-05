@@ -1,12 +1,13 @@
 package io.github.protocol.bookkeeper.admin.jdk;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import io.github.openfacade.http.HttpResponse;
 import io.github.protocol.bookkeeper.admin.common.JacksonService;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class AutoRecoveryImpl implements AutoRecovery {
     private final InnerHttpClient innerHttpClient;
@@ -18,7 +19,7 @@ public class AutoRecoveryImpl implements AutoRecovery {
     @Override
     public AutoRecoveryStatus autoRecoveryStatus() throws BookkeeperAdminException {
         try {
-            HttpResponse<String> resp = innerHttpClient.get(UrlConst.AUTO_RECOVERY_STATUS);
+            HttpResponse resp = innerHttpClient.get(UrlConst.AUTO_RECOVERY_STATUS);
             return JacksonService.toRefer(resp.body(), new TypeReference<AutoRecoveryStatus>() {
             });
         } catch (Exception e) {
@@ -30,7 +31,7 @@ public class AutoRecoveryImpl implements AutoRecovery {
     public void recoveryBookie(RecoveryBookieReqData reqData) throws BookkeeperAdminException {
         try {
             innerHttpClient.put(UrlConst.AUTO_RECOVERY, reqData);
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | ExecutionException e) {
             throw new BookkeeperAdminException(e);
         }
     }
@@ -51,9 +52,9 @@ public class AutoRecoveryImpl implements AutoRecovery {
             if (reqData.getIncludingBookieId() != null && !"".equals(reqData.getIncludingBookieId())) {
                 url = url + "&missingreplica=" + reqData.getIncludingBookieId();
             }
-            HttpResponse<String> resp = innerHttpClient.get(url);
+            HttpResponse resp = innerHttpClient.get(url);
             if ((resp.statusCode() < 200 || resp.statusCode() >= 300) && resp.body() != null) {
-                throw new BookkeeperAdminException(resp.body());
+                throw new BookkeeperAdminException(resp.bodyAsString());
             }
             return JacksonService.toRefer(resp.body(), new TypeReference<UnderReplicatedLedger>() {
             });
@@ -65,10 +66,10 @@ public class AutoRecoveryImpl implements AutoRecovery {
     @Override
     public Auditor whoIsAuditor() throws BookkeeperAdminException {
         try {
-            HttpResponse<String> resp = innerHttpClient.get(UrlConst.AUTO_RECOVERY_WHO_IS_AUDITOR);
+            HttpResponse resp = innerHttpClient.get(UrlConst.AUTO_RECOVERY_WHO_IS_AUDITOR);
 
             if ((resp.statusCode() < 200 || resp.statusCode() >= 300) && resp.body() != null) {
-                throw new BookkeeperAdminException(resp.body());
+                throw new BookkeeperAdminException(resp.bodyAsString());
             }
             return JacksonService.toRefer(resp.body(), new TypeReference<Auditor>() {
             });
@@ -80,11 +81,11 @@ public class AutoRecoveryImpl implements AutoRecovery {
     @Override
     public void triggerAudit() throws BookkeeperAdminException {
         try {
-            HttpResponse<String> resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_TRIGGER_AUDIT);
+            HttpResponse resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_TRIGGER_AUDIT);
             if ((resp.statusCode() < 200 || resp.statusCode() >= 300) && resp.body() != null) {
-                throw new BookkeeperAdminException(resp.body());
+                throw new BookkeeperAdminException(resp.bodyAsString());
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | ExecutionException e) {
             throw new BookkeeperAdminException(e);
         }
     }
@@ -92,11 +93,11 @@ public class AutoRecoveryImpl implements AutoRecovery {
     @Override
     public void lostBookieRecoveryDelay() throws BookkeeperAdminException {
         try {
-            HttpResponse<String> resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_LOST_BOOKIE_RECOVERY_DELAY);
+            HttpResponse resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_LOST_BOOKIE_RECOVERY_DELAY);
             if ((resp.statusCode() < 200 || resp.statusCode() >= 300) && resp.body() != null) {
-                throw new BookkeeperAdminException(resp.body());
+                throw new BookkeeperAdminException(resp.bodyAsString());
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | ExecutionException e) {
             throw new BookkeeperAdminException(e);
         }
     }
@@ -106,11 +107,11 @@ public class AutoRecoveryImpl implements AutoRecovery {
         Map<String, Integer> reqDate = new HashMap<>();
         reqDate.put("delay_seconds", delaySeconds);
         try {
-            HttpResponse<String> resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_LOST_BOOKIE_RECOVERY_DELAY, reqDate);
+            HttpResponse resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_LOST_BOOKIE_RECOVERY_DELAY, reqDate);
             if ((resp.statusCode() < 200 || resp.statusCode() >= 300) && resp.body() != null) {
-                throw new BookkeeperAdminException(resp.body());
+                throw new BookkeeperAdminException(resp.bodyAsString());
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | ExecutionException e) {
             throw new BookkeeperAdminException(e);
         }
     }
@@ -123,11 +124,11 @@ public class AutoRecoveryImpl implements AutoRecovery {
         Map<String, String> reqDate = new HashMap<>();
         reqDate.put("bookie_src", bookieId);
         try {
-            HttpResponse<String> resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_DECOMMISSION, reqDate);
+            HttpResponse resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_DECOMMISSION, reqDate);
             if ((resp.statusCode() < 200 || resp.statusCode() >= 300) && resp.body() != null) {
-                throw new BookkeeperAdminException(resp.body());
+                throw new BookkeeperAdminException(resp.bodyAsString());
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | ExecutionException e) {
             throw new BookkeeperAdminException(e);
         }
     }
