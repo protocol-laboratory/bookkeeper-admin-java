@@ -45,6 +45,15 @@ public class AutoRecoveryImplTest {
     }
 
     @Test
+    public void testRecoveryBookieError() {
+        RecoveryBookieReqData reqData = new RecoveryBookieReqData();
+        // bookie src is required
+        reqData.setBookieSrc(null);
+        reqData.setDeleteCookie(false);
+        Assertions.assertThrows(BookkeeperAdminException.class, () -> autoRecovery.recoveryBookie(reqData));
+    }
+
+    @Test
     public void testListUnderReplicatedLedger() {
         ListUnderReplicatedLedgerReqData reqData = new ListUnderReplicatedLedgerReqData();
         reqData.setPrintMissingReplica(true);

@@ -30,7 +30,10 @@ public class AutoRecoveryImpl implements AutoRecovery {
     @Override
     public void recoveryBookie(RecoveryBookieReqData reqData) throws BookkeeperAdminException {
         try {
-            innerHttpClient.put(UrlConst.AUTO_RECOVERY, reqData);
+            HttpResponse resp = innerHttpClient.put(UrlConst.AUTO_RECOVERY_BOOKIE, reqData);
+            if (resp.statusCode() < 200 || resp.statusCode() >= 300) {
+                throw new BookkeeperAdminException(resp.bodyAsString());
+            }
         } catch (IOException | InterruptedException | ExecutionException e) {
             throw new BookkeeperAdminException(e);
         }
