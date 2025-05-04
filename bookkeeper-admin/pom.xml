@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>bookkeeper-admin</artifactId>
-
     <dependencies>
         <dependency>
             <groupId>io.github.protocol-laboratory</groupId>
@@ -21,6 +20,41 @@
             <groupId>io.github.openfacade</groupId>
             <artifactId>http-facade</artifactId>
             <version>${http-facade.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${apache-http-client.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>${asynchttp.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-client</artifactId>
+            <version>${jetty.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.embedded-middleware</groupId>
+            <artifactId>embedded-bookkeeper-core</artifactId>
+            <version>${embedded-bookkeeper.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
