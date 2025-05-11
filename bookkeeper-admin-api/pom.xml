@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.protocol-laboratory</groupId>
-        <artifactId>bookkeeper-admin-parent</artifactId>
+        <artifactId>bookkeeper-admin-parent-dependencies</artifactId>
         <version>0.1.0</version>
+        <relativePath>../bookkeeper-admin-parent-dependencies</relativePath>
     </parent>
 
     <artifactId>bookkeeper-admin-api</artifactId>
