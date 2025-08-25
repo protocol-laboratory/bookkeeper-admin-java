@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.protocol-laboratory</groupId>
+        <artifactId>bookkeeper-admin-parent</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>bookkeeper-admin-bom</artifactId>
+    <packaging>pom</packaging>
+    <properties>
+        <annotations.version>13.0</annotations.version>
+        <embedded-bookkeeper.version>0.0.1</embedded-bookkeeper.version>
+        <http-facade.version>0.4.0</http-facade.version>
+        <jackson.version>2.17.2</jackson.version>
+        <junit.version>5.11.0</junit.version>
+        <log4j.version>2.20.0</log4j.version>
+        <lombok.version>1.18.34</lombok.version>
+        <reactor-netty.version>1.1.22</reactor-netty.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
